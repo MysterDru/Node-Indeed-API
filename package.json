@@ -1,19 +1,19 @@
 {
-  "name": "indeed-api",
-  "version": "0.0.2",
-  "description": "A node.js sdk for the Indeed job search api",
-  "main": "api.js",,
-  "repository": {
-    "type": "git",
-    "url": "(none)"
-  },
-  "keywords": [
-    "(none)"
-  ],
-  "author": "Drew Frisk",
-  "devDependencies": {},
-  "dependencies": {
-    "restler": "~3.1.0",
-    "querystring": "~0.2.0"
-  }
+	"name" : "indeed-api",
+	"version" : "1.0.0",
+	"description" : "A node.js library for the Indeed job search api.",
+	"main" : "api.js", ,
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/keannan5390/Node-Indeed-API.git"
+	},
+	"keywords" : [
+		"indeed"
+	],
+	"author" : "Drew Frisk",
+	"devDependencies" : {},
+	"dependencies" : {
+		"restler" : "~3.1.0",
+		"querystring" : "~0.2.0"
+	}
 }
