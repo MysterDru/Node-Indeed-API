@@ -1,11 +1,8 @@
 {
   "name": "indeed-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node.js sdk for the Indeed job search api",
-  "main": "api.js",
-  "scripts": {
-    "test": "mocha test/*.js"
-  },
+  "main": "api.js",,
   "repository": {
     "type": "git",
     "url": "(none)"
