@@ -2,7 +2,7 @@
 	"name" : "indeed-api",
 	"version" : "1.0.0",
 	"description" : "A node.js library for the Indeed job search api.",
-	"main" : "api.js", ,
+	"main" : "api.js",
 	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/keannan5390/Node-Indeed-API.git"
