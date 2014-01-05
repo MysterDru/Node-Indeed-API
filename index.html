@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Node Indeed API by keannan5390</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Node Indeed API</h1>
+        <p>A node.js sdk for the indeed api.</p>
+
+        <p class="view"><a href="https://github.com/keannan5390/Node-Indeed-API">View the Project on GitHub <small>keannan5390/Node-Indeed-API</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/keannan5390/Node-Indeed-API/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/keannan5390/Node-Indeed-API/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/keannan5390/Node-Indeed-API">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="node-indeed-api" class="anchor" href="#node-indeed-api"><span class="octicon octicon-link"></span></a>Node Indeed API</h1>
+
+<p>﻿
+﻿This is a small library for interacting with the Indeed API via node.js.</p>
+
+<p>﻿As the Indeed API only supports 2 endpoints, there are 2 operations you can perform in the library.</p>
+
+<ul>
+<li>Job Search</li>
+<li>Get Jobs</li>
+</ul><h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>An instance of the api can be invoked by calling getInstance() and providing it your publisher id.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'indeed-api'</span><span class="p">).</span><span class="nx">getInstance</span><span class="p">(</span><span class="s2">"YOUR-PUBLISHER-ID-HERE"</span><span class="p">);</span>
+</pre></div>
+
+<p>From there, the JobSearch() and GetJobs() endpoints can be accessed.</p>
+
+<p>Each endpoints query builder is accessed through chainable methods.</p>
+
+<h4>
+<a name="do-a-job-search" class="anchor" href="#do-a-job-search"><span class="octicon octicon-link"></span></a>Do a job search</h4>
+
+<p>Searches for a jobs based on the defined query.</p>
+
+<h6>
+<a name="available-methods" class="anchor" href="#available-methods"><span class="octicon octicon-link"></span></a>Available Methods:</h6>
+
+<ul>
+<li>WhereKeywords(keywords)       -- Sets the keywords to be used in the query</li>
+<li>WhereLocation(location)       -- Sets the location query values for the search query</li>
+<li>SortBy(value)                         -- Sets the value to sort by.</li>
+<li>Radius(radius)                        -- Sets the distance to include in the search results. Radius is "as the crow flies" from the location.</li>
+<li>WhereSiteType(type)               -- Specifies the site type to use in the search.</li>
+<li>WhereJobType(type)                -- Specifies the job type to use in the search.</li>
+<li>FromResult(position)          -- Sets the maximum number of results retured by the query.</li>
+<li>Limit(limit)                          -- Sets the number of days back to search</li>
+<li>Fromage(from)                         -- Sets whether or not to highlight the keywords in the results</li>
+<li>Highlight(bool)                       -- Sets whether or not to filter duplicate results</li>
+<li>FilterDuplicates(bool)        -- Sets whether or not to include the lat/lng position in the results</li>
+<li>IncludePosition(bool)         -- Sets the country to use in the search.</li>
+<li>WhereCountry(country)         -- Sets the channel to use in the search. Will group the results to the specific channel.</li>
+<li>WhereChannel(channel)         -- Sets the IP number of the end-user who will see the results.</li>
+<li>UserIP(userip)                        -- Sets the User-Agent (browser) of the end-user who will see the results.</li>
+<li>UserAgent(userAgent)          -- Sets the User-Agent (browser) of the end-user who will see the results.</li>
+</ul><div class="highlight highlight-js"><pre><span class="c1">// do a job search</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">JobSearch</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">Radius</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">WhereLocation</span><span class="p">({</span>
+        <span class="nx">city</span> <span class="o">:</span> <span class="s2">"Stevens Point"</span><span class="p">,</span>
+        <span class="nx">state</span> <span class="o">:</span> <span class="s2">"WI"</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">WhereKeywords</span><span class="p">([</span><span class="s2">"Information Technology"</span><span class="p">])</span>
+    <span class="p">.</span><span class="nx">SortBy</span><span class="p">(</span><span class="s2">"date"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">UserIP</span><span class="p">(</span><span class="s2">"1.2.3.4"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">UserAgent</span><span class="p">(</span><span class="s2">"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">Search</span><span class="p">(</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with the success results</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+    <span class="p">},</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with the error results</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">;</span>
+</pre></div>
+
+<h4>
+<a name="retrieve-jobs" class="anchor" href="#retrieve-jobs"><span class="octicon octicon-link"></span></a>Retrieve jobs</h4>
+
+<p>Retrieves specific job results based on their job key. (Available from the search results).</p>
+
+<h6>
+<a name="available-methods-1" class="anchor" href="#available-methods-1"><span class="octicon octicon-link"></span></a>Available Methods:</h6>
+
+<ul>
+<li>WhereJobKeys(jobkeys)     -- Sets the job keys to use in the retrieval</li>
+</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">jobkeys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"6a293ed4c08fe90c"</span><span class="p">,</span> <span class="s2">"3c609d8c08b9297e"</span><span class="p">,</span> <span class="p">...];</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">GetJob</span><span class="p">().</span><span class="nx">WhereJobKeys</span><span class="p">(</span><span class="nx">jobkeys</span><span class="p">).</span><span class="nx">Retrieve</span><span class="p">(</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with the success results</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with the error results</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">);</span>
+</pre></div>
+
+<p>** The object structure in the results will be the same for both a search and retrieval **</p>
+
+<h2>
+<a name="contribution" class="anchor" href="#contribution"><span class="octicon octicon-link"></span></a>Contribution</h2>
+
+<p>Bug fixes and features are welcomed.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT License</p>
+
+<p>Copyright (C) 2012 Veselin Todorov</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/keannan5390">keannan5390</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
