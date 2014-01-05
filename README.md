@@ -89,7 +89,8 @@ api.GetJob().WhereJobKeys(jobkeys).Retrieve(
 
 ##Contribution
 
-Bug fixes and features are welcomed.
+I had a small use case when implementing this library. While it should work with out too many problems,
+there very well could be issues. As such, any and all bug fixes and features are welcomed and encouraged.
 
 ##License
 
