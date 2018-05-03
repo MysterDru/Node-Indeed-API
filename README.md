@@ -1,13 +1,20 @@
-﻿#Node Indeed API
-﻿
-﻿This is a small library for interacting with the Indeed API via node.js.
+# Node Indeed API (Deprecated)
 
-﻿As the Indeed API only supports 2 endpoints, there are 2 operations you can perform in the library.
+---
+
+The project I originally created this library for hasn't been active for a long time. As a result, I am not maintaining this project. 
+
+---
+
+
+This is a small library for interacting with the Indeed API via node.js.
+
+As the Indeed API only supports 2 endpoints, there are 2 operations you can perform in the library.
 
 - Job Search
 - Get Jobs
 
-###Usage
+### Usage
 
 An instance of the api can be invoked by calling getInstance() and providing it your publisher id.
 
@@ -19,10 +26,10 @@ From there, the JobSearch() and GetJobs() endpoints can be accessed.
 
 Each endpoints query builder is accessed through chainable methods.
 
-####Do a job search
+#### Do a job search
 Searches for a jobs based on the defined query.
 
-######Available Methods:
+###### Available Methods:
 - WhereKeywords(keywords)		-- Sets the keywords to be used in the query
 - WhereLocation(location)		-- Sets the location query values for the search query
 - SortBy(value)							-- Sets the value to sort by.
@@ -65,10 +72,10 @@ api.JobSearch()
 ;
 ```
 
-####Retrieve jobs
+#### Retrieve jobs
 Retrieves specific job results based on their job key. (Available from the search results).
 
-######Available Methods:
+###### Available Methods:
 - WhereJobKeys(jobkeys)		-- Sets the job keys to use in the retrieval
 
 ```js
@@ -87,16 +94,15 @@ api.GetJob().WhereJobKeys(jobkeys).Retrieve(
 
 ** The object structure in the results will be the same for both a search and retrieval **
 
-##Contribution
+## Contribution
 
-I had a small use case when implementing this library. While it should work with out too many problems,
-there very well could be issues. As such, any and all bug fixes and features are welcomed and encouraged.
+I had a small use case when implementing this library. While it should work without too many problems, there very well could be issues. As such, any and all bug fixes and features are welcomed and encouraged.
 
-##License
+## License
 
 MIT License
 
-Copyright (C) 2012 Veselin Todorov
+Copyright (C) 2012 Drew Frisk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -115,5 +121,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
