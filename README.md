@@ -1,11 +1,10 @@
 # Node Indeed API (Deprecated)
 
----
-
 The project I originally created this library for hasn't been active for a long time. As a result, I am not maintaining this project. 
 
 ---
 
+### Overview
 
 This is a small library for interacting with the Indeed API via node.js.
 
